@@ -24,6 +24,7 @@ phone_numbers = c1.broadcast(phone_numbers, channels, followings)
 phone_numbers = c2.broadcast(phone_numbers, channels, followings)
 phone_numbers = c2.broadcast(phone_numbers, channels, followings)
 phone_numbers = c2.broadcast(phone_numbers, channels, followings)
+
 followings, phone_numbers = u2.follow_channel(c1.channel_uid, channels, phone_numbers, followings)
 # followings, phone_numbers = u2.follow_channel(c3.channel_uid, channels, phone_numbers, followings)
 
@@ -50,3 +51,4 @@ print(c2)
 print(c3)
 print(c4)
 print(c5)
+print(phone_numbers)

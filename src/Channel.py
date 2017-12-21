@@ -1,13 +1,13 @@
 import random
 import string
 from src import utils
-
+import copy
 
 class Channel:
-    def __init__(self, channel_uid=None, phone_number=None):
+    def __init__(self, channel_uid=None, phone_number=None, broadcast_count=0):
         self.channel_uid = channel_uid
         self.phone_number = phone_number
-        self.broadcast_count = 0
+        self.broadcast_count = broadcast_count
 
     def __repr__(self):
         return self.channel_uid+" "+str(self.phone_number)+" "+str(self.broadcast_count)
@@ -20,6 +20,7 @@ class Channel:
         # Get the least used phone_number from phone_numbers list
         number_to_assign = utils.get_least_used_number(phone_number_list=phone_numbers,
                                                        channel_list=channel_list)
+        new_phone_numbers = copy.deepcopy(phone_numbers)
         phone_numbers = [i for i in phone_numbers if i != number_to_assign]
 
         # Keep updating number_to_assign till there is no collision
@@ -34,9 +35,10 @@ class Channel:
             number_to_assign = ''.join(random.choice(string.digits) for i in range(3))
         self.phone_number = number_to_assign
 
-        if number_to_assign not in phone_numbers:
-            phone_numbers.append(number_to_assign)
-        return phone_numbers
+        if number_to_assign not in new_phone_numbers:
+            new_phone_numbers.append(number_to_assign)
+
+        return new_phone_numbers
 
     """
     Placeholder for increasing broadcast_count of channel
