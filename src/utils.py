@@ -1,6 +1,7 @@
 from operator import attrgetter
 
 
+# Phone number which is used in least number of channels
 def get_least_used_number(phone_number_list, channel_list):
     channels_with_number = [channel for channel in channel_list if channel.phone_number in phone_number_list]
     least_used_number = None
@@ -12,13 +13,13 @@ def get_least_used_number(phone_number_list, channel_list):
     return least_used_number
 
 
-# check if assigning phone_number to channel with uid==channel_uid results in a collision
+# Check if assigning phone_number to channel with uid==channel_uid results in a collision
 def is_collision(phone_number, channel_uid, channel_list, followers):
     if phone_number is None:
         return False
     channels_with_number = [channel for channel in channel_list if channel.phone_number == phone_number]
     # users following channel_uid
-    curr_users = [i.user_uid for i in followers if(i.channel_uid == channel_uid)]
+    curr_users = [i.user_uid for i in followers if (i.channel_uid == channel_uid)]
     for user in curr_users:
         # find all channels that user follows
         user_channels = [i.channel_uid for i in followers if i.user_uid == user and i.channel_uid != channel_uid]
@@ -28,6 +29,6 @@ def is_collision(phone_number, channel_uid, channel_list, followers):
     return False
 
 
+# Least impacted channel is the one with least number of broadcasts in channel_list
 def least_impacted_channel(channel_list):
     return min(channel_list, key=attrgetter('broadcast_count'))
-

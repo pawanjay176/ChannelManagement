@@ -30,6 +30,7 @@ followings, phone_numbers = u2.follow_channel(c1.channel_uid, channels, phone_nu
 c4 = Channel("c4")
 channels.append(c4)
 phone_numbers = c4.broadcast(phone_numbers, channels, followings)
+phone_numbers = c4.broadcast(phone_numbers, channels, followings)
 
 followings, phone_numbers = u1.follow_channel(c4.channel_uid, channels, phone_numbers, followings)
 followings, phone_numbers = u3.follow_channel(c4.channel_uid, channels, phone_numbers, followings)

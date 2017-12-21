@@ -10,19 +10,21 @@ class User:
     def __repr__(self):
         return self.uid + " " + str(self.name)
 
-    # need to work only for channels followed by same user!!!!
+    """
+    Make the current instance of user follow channel with uid==channel_uid
+    """
     def follow_channel(self, channel_uid, channel_list, phone_numbers, followers):
-        # check if user is already following the channel
+        # Check if user is already following the channel
         if channel_uid in [i.channel_uid for i in followers if i.user_uid == self.uid]:
             return
-        # if not add to followers list
+        # If not add to followers list
         followers.append(Following(self.uid, channel_uid))
 
         # get all of current user's channels
         user_channels_uid = [i.channel_uid for i in followers if i.user_uid == self.uid]
         user_channels = [i for i in channel_list if i.channel_uid in user_channels_uid]
-        # check if there is a collision while following and handle
 
+        # check if there is a collision while following and handle
         curr_channel = [channel for channel in channel_list if channel.channel_uid == channel_uid][0]
         if curr_channel.phone_number is not None:
             if utils.is_collision(curr_channel.phone_number, channel_uid, channel_list, followers):
