@@ -22,3 +22,5 @@ User class contains the follow_channel method which makes the particular
  user follow the specified channel. If there is a collision after the new following, 
  the phone numbers of the channels are changed subject to the constraints in the objective. 
  
+utils is a utility module which contains functions for getting 
+least used phone number, least impacted channel and detecting collisions. 
