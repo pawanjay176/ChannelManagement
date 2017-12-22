@@ -1,6 +1,7 @@
+# Testing slightly complex test cases
+
 from src.Following import Following
 from src.User import User
-
 from src.Channel import Channel
 
 channels = [Channel("c1"), Channel("c2"), Channel("c3")]
@@ -38,7 +39,6 @@ followings, phone_numbers = u3.follow_channel(c4.channel_uid, channels, phone_nu
 
 c5 = Channel("c5")
 channels.append(c5)
-
 
 u5 = User("u5")
 users.append(u5)
